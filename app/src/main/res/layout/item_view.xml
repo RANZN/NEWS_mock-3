@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ranzan.newsmock_3.model.remote.ArticlesItem" />
+
+        <variable
+            name="itemClick"
+            type="com.ranzan.newsmock_3.view.adapter.OnItemClick" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:onClick="@{()-> itemClick.onClick(item)}"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="@drawable/txt_bg"
+                android:loadImage="@{item.urlToImage}"
+                android:minHeight="200dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tvSourceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:hint="Source Name"
+                android:text="@{item.source.name}"
+                android:textColor="#bababa"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:hint="Date"
+                android:text="@{item.publishedAt}"
+                android:textColor="#bababa"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvSourceName"
+                app:layout_constraintStart_toEndOf="@id/tvSourceName" />
+
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/roboto_slab"
+                android:hint="News"
+                android:text="@{item.title}"
+                android:textColor="#f2f2f2"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvSourceName"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
