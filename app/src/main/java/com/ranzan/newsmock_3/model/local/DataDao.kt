@@ -17,4 +17,6 @@ interface DataDao {
     @Query("SELECT * FROM article")
     fun getData(): LiveData<List<ArticlesItem>>
 
+    @Query("DELETE FROM article")
+    fun deleteAllFromDb()
 }

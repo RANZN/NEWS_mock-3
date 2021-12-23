@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ranzan.newsmock_3.R
 import com.ranzan.newsmock_3.databinding.ItemViewBinding
-import com.ranzan.newsmock_3.model.local.DataEntity
 import com.ranzan.newsmock_3.model.remote.ArticlesItem
 
 class RecyclerViewAdapter(
@@ -32,5 +31,6 @@ class RecyclerViewHolder(private val itemViewBinding: ItemViewBinding) :
     RecyclerView.ViewHolder(itemViewBinding.root) {
     fun bindData(articlesItem: ArticlesItem, onnItemClick: OnItemClick) {
         itemViewBinding.item = articlesItem
+        itemViewBinding.itemClick = onnItemClick
     }
 }

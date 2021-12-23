@@ -2,11 +2,14 @@ package com.ranzan.newsmock_3.model.remote
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName
 import com.ranzan.newsmock_3.R
+import java.io.Serializable
 
 data class ResponseModel(
 
@@ -23,45 +26,50 @@ data class ResponseModel(
 data class Source(
 
     @field:SerializedName("name")
-    val name: String? = null,
+    var name: String? = null,
 
     @field:SerializedName("id")
-    val id: String? = null
-)
+    var id: String? = null
+):Serializable
 
 
 @Entity(tableName = "article")
 data class ArticlesItem(
 
-    @PrimaryKey
-    val id: Int? = null,
 
     @field:SerializedName("publishedAt")
-    val publishedAt: String? = null,
+    var publishedAt: String? = null,
 
     @field:SerializedName("author")
-    val author: String? = null,
+    var author: String? = null,
 
     @field:SerializedName("urlToImage")
-    val urlToImage: String? = null,
+    var urlToImage: String? = null,
 
     @field:SerializedName("description")
-    val description: String? = null,
+    var description: String? = null,
 
+    @Embedded
     @field:SerializedName("source")
-    val source: Source? = null,
+    var source: Source? = null,
 
     @field:SerializedName("title")
-    val title: String? = null,
+    var title: String? = null,
 
     @field:SerializedName("url")
-    val url: String? = null,
+    var url: String? = null,
 
     @field:SerializedName("content")
-    val content: String? = null
-)
+    var content: String? = null
+) : Serializable {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "primaryKey")
+    var primaryKey: Int? = null
+}
 
 @BindingAdapter("android:loadImage")
-fun loadImage(imageView: ImageView, url: String) {
-    Glide.with(imageView).load(url).placeholder(R.drawable.broken_image).into(imageView)
+fun loadImage(imageView: ImageView, url: String?) {
+    if (url != null) {
+        Glide.with(imageView).load(url).placeholder(R.drawable.broken_image).into(imageView)
+    }
 }

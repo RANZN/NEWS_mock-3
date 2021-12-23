@@ -14,7 +14,7 @@
             android:name=".view.MainActivity3"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity2"
+            android:name=".view.DetailedActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

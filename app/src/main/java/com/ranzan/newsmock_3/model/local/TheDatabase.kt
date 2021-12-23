@@ -9,7 +9,6 @@ import com.ranzan.newsmock_3.model.remote.ArticlesItem
 
 
 @Database(entities = [ArticlesItem::class], version = 1)
-@TypeConverters(Converters::class)
 abstract class TheDatabase : RoomDatabase() {
     abstract fun getDao(): DataDao
 

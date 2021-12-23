@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity(), OnItemClick {
 
 
     override fun onClick(articlesItem: ArticlesItem) {
-        val intent = Intent(MainActivity@ this, MainActivity2::class.java)
-//        intent.putExtra("data", articlesItem)
+        val intent = Intent(MainActivity@ this, DetailedActivity::class.java)
+        intent.putExtra("data", articlesItem)
         startActivity(intent)
     }
 }

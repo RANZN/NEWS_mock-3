@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:hint="Date"
+                android:maxLength="10"
                 android:text="@{item.publishedAt}"
                 android:textColor="#bababa"
                 android:textSize="12sp"

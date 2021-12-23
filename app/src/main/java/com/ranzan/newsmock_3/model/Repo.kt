@@ -10,11 +10,15 @@ import kotlinx.coroutines.launch
 
 class Repo(private val dataDao: DataDao) {
 
+
     fun getDataFromApi(): LiveData<List<ArticlesItem>> {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val list = Network.apiClient.getData().articles
-                list?.forEach {
+                if (list != null) {
+                    dataDao.deleteAllFromDb()
+                }
+                list!!.forEach {
                     dataDao.addData(it!!)
                 }
             } catch (e: Exception) {
